@@ -7,7 +7,7 @@ public class Main01 {
 
         Long startTime = System.nanoTime();
 
-
+        int counter1 = 0;
         int[] array1 = new int[10];
         int[] array2 = new int[10];
         Random random = new Random();
@@ -24,6 +24,7 @@ public class Main01 {
         for (int j = 0; j < array1.length - 1; j++) {
             boolean isChanged = false;
             for (int i = 0; i < array1.length - j - 1; i++) {
+                counter1++;
                 if (array1[i] > array1[i + 1]) {
                     int temp = array1[i];
                     array1[i] = array1[i + 1];
@@ -41,28 +42,30 @@ public class Main01 {
         Long duration1 = (endTime1 - startTime);
         double durationInSeconds1 = duration1 / 1000000000.0;
 
-        System.out.println("Bubble Sort Time: " + durationInSeconds1 + " секунд");
+        System.out.println("Bubble Sort Time: " + durationInSeconds1 + " секунд. " + "\n количество операций " + counter1);
         Long startTime2 = System.nanoTime();
 
 //сортировка выбором
+        int counter2 = 0;
         for (int j = 0; j < array2.length; j++) {
             int min = array2[j];
             int index = j;
 
             for (int i = j; i < array2.length; i++) {
-          if (array2[i]<min){
-              min = array2[i];
-              index= i;
-          }
+                counter2++;
+                if (array2[i] < min) {
+                    min = array2[i];
+                    index = i;
+                }
             }
-int temp = array2[j];
-            array2[j]= array2[index];
-            array2[index]= temp;
+            int temp = array2[j];
+            array2[j] = array2[index];
+            array2[index] = temp;
         }
         Long endTime2 = System.nanoTime();
         Long duration2 = (endTime2 - startTime2);
         double durationInSeconds2 = duration2 / 1000000000.0;
 
-        System.out.println("Selection sort time: " + durationInSeconds2+" секунд");
+        System.out.println("Selection sort time: " + durationInSeconds2 + " секунд." + "\n количество операций " + counter2);
     }
 }
